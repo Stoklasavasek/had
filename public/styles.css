@@ -1,0 +1,24 @@
+body {
+    background-image: url('pozadi.jpeg');
+    background-size: cover; 
+    background-position: center center; 
+    height: 100vh; 
+    margin: 0; 
+}
+
+table {
+    max-width: 100px !important;
+    width: 30% !important;
+    margin: 0 auto !important;
+    color: blue;
+    background-color: white; /* Bílé pozadí pro tabulku */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
