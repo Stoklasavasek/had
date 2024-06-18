@@ -13,15 +13,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
 // Endpoint pro uložení skóre
-app.post('/api/scores', (req, res) => {
+app.post('/api/scores', (req, res) => { // definuje, co se má stát, když server obdrží POST požadavek na danou cestu
     const { name, score } = req.body; // Získá jméno a skóre z těla požadavku
 
     // Načtení existujících výsledků ze souboru
     let scores = [];
-    try {
+    try {   //pokusí se precist obsah ze scores.json
         const data = fs.readFileSync('scores.json', 'utf8'); // Čte obsah souboru scores.json
         scores = JSON.parse(data); // Parsuje JSON data do JavaScript pole
-    } catch (err) {
+    } catch (err) { // blok kodu ktery se vykona jestli se stane error v try
         console.error('Error reading scores file:', err); // Zaznamená chybu při čtení souboru
     }
 
@@ -52,8 +52,8 @@ app.get('/', (req, res) => {
 
 // Endpoint pro získání nejlepších skóre
 app.get('/api/scores', (req, res) => {
-    let scores = [];
-    try {
+    let scores = []; // vytvori promenou(pole)
+    try {   //pokusí se číst obsah ze scores.json
         const data = fs.readFileSync('scores.json', 'utf8'); // Čte obsah souboru scores.json
         scores = JSON.parse(data); // Parsuje JSON data do JavaScript pole
     } catch (err) {
@@ -63,6 +63,6 @@ app.get('/api/scores', (req, res) => {
     res.status(200).send(scores); // Odesílá odpověď s výsledky a status kódem 200 (OK)
 });
 
-app.listen(port, () => {
+app.listen(port, () => { // aplikace posloucha na portu
     console.log(`Server running at http://localhost:${port}/`); // Zaznamená spuštění serveru a port, na kterém naslouchá
 });
