@@ -6,11 +6,11 @@ const path = require('path'); // Importuje modul pro práci s cestami
 const app = express(); // Vytvoří novou instanci Express aplikace
 const port = 3000; // Nastaví port, na kterém bude server naslouchat
 
-// Nastaví statický adresář pro servírování statických souborů
+// Nastaví statický adresář pro dávání statických souborů
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Nastaví body-parser middleware pro parsování JSON požadavků
-app.use(bodyParser.json());
+
+app.use(bodyParser.json()); //Tento řádek kódu říká serveru, aby automaticky přečetl a pochopil data, která mu posíláš v požadavcích, pokud jsou tato data ve formátu JSON
 
 // Endpoint pro uložení skóre
 app.post('/api/scores', (req, res) => { // definuje, co se má stát, když server obdrží POST požadavek na danou cestu
